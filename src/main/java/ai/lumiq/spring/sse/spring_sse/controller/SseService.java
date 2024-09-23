@@ -3,7 +3,6 @@ package ai.lumiq.spring.sse.spring_sse.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Map;
@@ -20,8 +19,6 @@ public class SseService {
                 .accept(MediaType.TEXT_EVENT_STREAM)
                 .retrieve()
                 .bodyToFlux(Map.class)
-                .subscribe((s) -> {
-                    System.out.println(s);
-                });
+                .subscribe((s) -> System.out.println(s));
     }
 }
